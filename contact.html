@@ -178,38 +178,43 @@
 <script type="importmap">
   { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
 </script>
-
 <script type="module">
 import * as THREE from "three";
 
+/* ===============================
+   THREE.JS BACKGROUND (UNCHANGED)
+================================ */
 const canvas = document.getElementById("webgl");
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.z = 10;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Particles
 const COUNT = 7000;
 const pos = new Float32Array(COUNT * 3);
-for(let i=0; i<COUNT; i++) {
-  pos[i*3] = (Math.random() - 0.5) * 15;
-  pos[i*3+1] = (Math.random() - 0.5) * 15;
-  pos[i*3+2] = (Math.random() - 0.5) * 10;
+for (let i = 0; i < COUNT; i++) {
+  pos[i * 3] = (Math.random() - 0.5) * 15;
+  pos[i * 3 + 1] = (Math.random() - 0.5) * 15;
+  pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
 }
+
 const geo = new THREE.BufferGeometry();
 geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-
-const mat = new THREE.PointsMaterial({ color: 0x14b8a6, size: 0.035, transparent: true, opacity: 0.6 });
+const mat = new THREE.PointsMaterial({
+  color: 0x14b8a6,
+  size: 0.035,
+  transparent: true,
+  opacity: 0.6
+});
 const points = new THREE.Points(geo, mat);
 scene.add(points);
 
-// Mouse interaction
 let mouseX = 0, mouseY = 0;
-window.addEventListener('mousemove', (e) => {
-  mouseX = (e.clientX - window.innerWidth/2) / 100;
-  mouseY = (e.clientY - window.innerHeight/2) / 100;
+window.addEventListener("mousemove", (e) => {
+  mouseX = (e.clientX - window.innerWidth / 2) / 100;
+  mouseY = (e.clientY - window.innerHeight / 2) / 100;
 });
 
 function animate() {
@@ -221,19 +226,50 @@ function animate() {
 }
 animate();
 
-// Form logic
+/* ===============================
+   REAL FORM SUBMISSION (FIX)
+================================ */
 const form = document.getElementById("form");
+const successBox = document.getElementById("success");
+const submitBtn = document.getElementById("submitBtn");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const btn = document.getElementById("submitBtn");
-  btn.innerText = "Sending...";
-  
-  // Simulated success (using your existing logic structure)
-  setTimeout(() => {
-    document.getElementById("success").style.display = "block";
-    btn.innerText = "Enquiry Sent";
+
+  // Honeypot spam check
+  if (form.website.value !== "") return;
+
+  submitBtn.innerText = "Sending...";
+  submitBtn.disabled = true;
+
+  const payload = {
+    name: form.name.value,
+    email: form.email.value,
+    service: form.service.value,
+    message: form.message.value,
+    source: "SJ Creative Labs – New Website"
+  };
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzSBAOsMRZZGGFn7tItcP-f_wn2Vcwpvsb51SUhYFqbabMeBw2H7uFPiKLMLRr-A7sGOQ/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }
+    );
+
+    successBox.style.display = "block";
+    submitBtn.innerText = "Enquiry Sent";
     form.reset();
-  }, 1500);
+
+  } catch (err) {
+    alert("Submission failed. Please try again.");
+    submitBtn.innerText = "Send Enquiry";
+    submitBtn.disabled = false;
+  }
 });
 </script>
 </body>
