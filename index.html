@@ -33,7 +33,7 @@ canvas {
   pointer-events: none;
 }
 
-/* INCREASED HEADER HEIGHT & UNIFORM STYLING */
+/* RESPONSIVE HEADER */
 header {
   position: fixed;
   top: 0;
@@ -43,31 +43,30 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 4rem; 
-  min-height: 95px;      
   box-sizing: border-box;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 2px solid #14b8a6;
+  transition: all 0.3s ease;
 }
 
 .logo-title {
   display: flex;
   align-items: center;
   gap: 15px;
-  color: white;
   text-decoration: none;
 }
 
 .logo-title img {
-  height: 50px; 
+  height: 45px; 
   border-radius: 8px;
 }
 
 .logo-title h2 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #e0f2fe;
 }
 
@@ -92,28 +91,24 @@ nav a:hover { color: #14b8a6; }
 }
 
 .cta-buttons a {
-  padding: 10px 20px;
+  padding: 10px 18px;
   background-color: #14b8a6;
   border-radius: 8px;
   text-decoration: none;
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
-.cta-buttons a:hover {
-  background-color: #0f766e;
-  transform: translateY(-2px);
-}
-
-/* Hero Section */
+/* Hero Section - Using svh for mobile browsers */
 .hero-section {
   position: relative;
-  height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: 120px 10% 0 10%; 
+  padding: 0 10%; 
   z-index: 3;
 }
 
@@ -122,7 +117,7 @@ nav a:hover { color: #14b8a6; }
 }
 
 .overlay h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
   line-height: 1.1;
   background: linear-gradient(to right, #fff, #14b8a6);
   -webkit-background-clip: text;
@@ -132,16 +127,15 @@ nav a:hover { color: #14b8a6; }
 }
 
 .overlay p {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 4vw, 1.25rem);
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2.5rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .hero-btn {
   display: inline-block;
   padding: 14px 32px;
-  background: transparent;
   border: 1px solid #14b8a6;
   color: #14b8a6;
   text-decoration: none;
@@ -150,65 +144,60 @@ nav a:hover { color: #14b8a6; }
   transition: all 0.3s ease;
 }
 
-.hero-btn:hover {
-  background: #14b8a6;
-  color: white;
-  box-shadow: 0 0 25px rgba(20, 184, 166, 0.4);
-}
-
 /* Content Layout */
-.content-wrapper {
-  position: relative;
-  z-index: 4;
-}
-
 .services-container {
   padding: 10vh 10%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
-/* UNIFORM GLASS CARD STYLE */
 .service-card {
   background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(20, 184, 166, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
   border-radius: 24px;
-  padding: 4rem 3rem;
+  padding: 3rem 2rem;
   width: 100%;
-  max-width: 380px; 
-  min-height: 150px; 
-  margin-bottom: 30vh; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: all 0.5s ease;
+  max-width: 400px; 
+  margin-bottom: 20vh; 
+  transition: all 0.4s ease;
 }
 
-.service-card:hover {
-  border-color: #14b8a6;
-  transform: translateX(20px);
-  background: rgba(20, 184, 166, 0.05);
-}
-
-.card-num { color: #14b8a6; font-family: monospace; font-size: 1.3rem; margin-bottom: 1rem; font-weight: bold; }
-.service-card h3 { font-size: 2.3rem; margin: 0 0 1.5rem 0; color: #fff; }
-.service-card p { font-size: 1.15rem; line-height: 1.8; color: rgba(255, 255, 255, 0.7); }
+.service-card h3 { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+.service-card p { font-size: 1.1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.7); }
 
 footer {
-  padding: 4rem;
+  padding: 3rem 1rem;
   text-align: center;
-  background: #000;
   border-top: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.4);
 }
 
-@media (max-width: 1100px) {
-  .service-card { max-width: 100%; min-height: auto; margin-bottom: 15vh; }
-  header { padding: 1rem 2rem; min-height: 70px; }
-  nav { display: none; }
+/* MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  nav { display: none; } /* Hide desktop nav */
+
+  .logo-title h2 { font-size: 1.1rem; }
+
+  .hero-section {
+    padding-top: 160px; /* Space for the stacked header */
+    justify-content: center;
+    text-align: center;
+  }
+
+  .service-card {
+    max-width: 100%;
+    margin-bottom: 5vh; /* Tighten gaps for mobile scroll */
+    transform: none !important; /* Prevent hover jitter on touch */
+  }
 }
 </style>
 </head>
@@ -236,9 +225,9 @@ footer {
 
 <section class="hero-section">
   <div class="overlay">
-    <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.9rem;">STUDENTPRENEURS</span>
+    <span style="color:#14b8a6; letter-spacing:3px; font-weight: bold; font-size: 0.8rem;">STUDENTPRENEURS</span>
     <h1>Innovate.<br>Elevate.<br>Dominate.</h1>
-    <p>We are your digital partners for high-performance branding, design, and marketing strategies.</p>
+    <p>We build digital experiences that turn ideas into market-leading brands.</p>
     <a href="#services" class="hero-btn">Explore Our Services</a>
   </div>
 </section>
@@ -247,17 +236,17 @@ footer {
   <section class="services-container">
     <div class="service-card">
       <h3>Web Design</h3>
-      <p>Crafting responsive and modern websites. We build digital experiences that turn ideas into brands.</p>
+      <p>Crafting responsive and modern websites. High-performance design meets seamless user experience.</p>
     </div>
 
     <div class="service-card">
       <h3>Digital Marketing</h3>
-      <p>Performance-based campaigns that deliver real ROI. We help startups design, build, and scale digital products.</p>
+      <p>Performance-based campaigns that deliver real ROI. Scale your digital product with precision.</p>
     </div>
 
     <div class="service-card">
       <h3>Brand Strategy</h3>
-      <p>Building brands from scratch that stand out with clarity, consistency, and power.</p>
+      <p>Building brands from scratch that stand out with clarity, consistency, and market power.</p>
     </div>
   </section>
 
@@ -294,38 +283,38 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+
+// Only use Bloom if not on a low-end mobile for performance
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.2, 0.4, 0.85);
 composer.addPass(bloomPass);
 
-// Particles Setup
-const COUNT = 15000;
+// PERFORMANCE OPTIMIZATION: Reduce particles on mobile
+const isMobile = window.innerWidth < 768;
+const COUNT = isMobile ? 6000 : 15000; 
+
 const sphere = new Float32Array(COUNT * 3);
 const cube = new Float32Array(COUNT * 3);
 
 for (let i = 0; i < COUNT; i++) {
-  // SCALED SPHERE (Radius: 1.5)
   const u = Math.random();
   const v = Math.random();
   const theta = u * Math.PI * 2;
   const phi = Math.acos(2 * v - 1);
   const r = 1.5;
-
-  sphere[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+  sphere[i * 3] = r * Math.sin(phi) * Math.cos(theta);
   sphere[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
   sphere[i * 3 + 2] = r * Math.cos(phi);
 
-  // SCALED CUBE (Fixed: 1.1, Spread: 2.2)
   const side = Math.floor(Math.random() * 6);
   const a = (Math.random() - 0.5) * 2.2;
   const b = (Math.random() - 0.5) * 2.2;
   const fixed = 1.1; 
-
-  if (side === 0)      { cube[i*3]=fixed;  cube[i*3+1]=a;      cube[i*3+2]=b; }
-  else if (side === 1) { cube[i*3]=-fixed; cube[i*3+1]=a;      cube[i*3+2]=b; }
-  else if (side === 2) { cube[i*3]=a;      cube[i*3+1]=fixed;  cube[i*3+2]=b; }
-  else if (side === 3) { cube[i*3]=a;      cube[i*3+1]=-fixed; cube[i*3+2]=b; }
-  else if (side === 4) { cube[i*3]=a;      cube[i*3+1]=b;      cube[i*3+2]=fixed; }
-  else                 { cube[i*3]=a;      cube[i*3+1]=b;      cube[i*3+2]=-fixed; }
+  if (side === 0) { cube[i*3]=fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
+  else if (side === 1) { cube[i*3]=-fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
+  else if (side === 2) { cube[i*3]=a; cube[i*3+1]=fixed; cube[i*3+2]=b; }
+  else if (side === 3) { cube[i*3]=a; cube[i*3+1]=-fixed; cube[i*3+2]=b; }
+  else if (side === 4) { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=fixed; }
+  else { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=-fixed; }
 }
 
 const geometry = new THREE.BufferGeometry();
@@ -352,7 +341,7 @@ const material = new THREE.ShaderMaterial({
       pos += normalize(pos) * (0.15 / (d + 0.5)) * sin(uTime * 2.0);
       vAlpha = 1.0 - (uMorph * 0.3);
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-      gl_PointSize = 2.0;
+      gl_PointSize = ${isMobile ? '3.0' : '2.0'};
     }
   `,
   fragmentShader: `
@@ -368,42 +357,55 @@ const material = new THREE.ShaderMaterial({
 });
 
 const points = new THREE.Points(geometry, material);
-
-// LOWERED & SCALED POSITIONING
-points.position.x = 2.2; 
-points.position.y = -0.8; // Lowered further to stay clear of header
 scene.add(points);
 
+// DYNAMIC POSITIONING FUNCTION
+function handleResize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+  composer.setSize(width, height);
+
+  if (width < 768) {
+    points.position.set(0, -0.5, 0); // Center on mobile
+    points.scale.setScalar(0.7);      // Scale down
+  } else {
+    points.position.set(2.2, -0.8, 0); // Side on desktop
+    points.scale.setScalar(1);
+  }
+}
+
+window.addEventListener("resize", handleResize);
+handleResize(); // Initial call
+
+// SCROLL AND INTERACTION
 window.addEventListener("scroll", () => {
   const scrollTotal = document.body.scrollHeight - window.innerHeight;
-  const s = window.scrollY / scrollTotal;
-  material.uniforms.uMorph.value = THREE.MathUtils.clamp(s * 2.5, 0, 1);
+  const s = window.scrollY / (scrollTotal || 1);
+  material.uniforms.uMorph.value = THREE.MathUtils.clamp(s * 2.2, 0, 1);
 });
 
-window.addEventListener("mousemove", e => {
-  material.uniforms.uMouse.value.x = (e.clientX / innerWidth - 0.5) * 4 - 2;
-  material.uniforms.uMouse.value.y = -(e.clientY / innerHeight - 0.5) * 4;
-});
+// Support both mouse and touch
+const updateMouse = (x, y) => {
+  material.uniforms.uMouse.value.x = (x / window.innerWidth - 0.5) * 4 - (window.innerWidth < 768 ? 0 : 2);
+  material.uniforms.uMouse.value.y = -(y / window.innerHeight - 0.5) * 4;
+};
 
-window.addEventListener("resize", () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  composer.setSize(window.innerWidth, window.innerHeight);
-  points.position.x = window.innerWidth < 1100 ? 0 : 2.2;
-});
+window.addEventListener("mousemove", e => updateMouse(e.clientX, e.clientY));
+window.addEventListener("touchmove", e => updateMouse(e.touches[0].clientX, e.touches[0].clientY));
 
 const clock = new THREE.Clock();
 function animate() {
   requestAnimationFrame(animate);
   material.uniforms.uTime.value = clock.getElapsedTime();
   points.rotation.y += 0.0015;
-  points.rotation.x += 0.0005;
   composer.render();
 }
 animate();
 </script>
 
 </body>
-
 </html>
