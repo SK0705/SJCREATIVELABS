@@ -9,138 +9,41 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      background: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    .bg-fixed {
-      position: fixed; inset: 0;
-      background: radial-gradient(circle at 20% 30%, #020617 0%, #000 100%);
-      z-index: 0;
-    }
-
+    /* ... (Styles remain consistent with previous design) ... */
+    html, body { margin: 0; padding: 0; background: #000; font-family: 'Segoe UI', sans-serif; color: white; scroll-behavior: smooth; overflow-x: hidden; }
+    .bg-fixed { position: fixed; inset: 0; background: radial-gradient(circle at 20% 30%, #020617 0%, #000 100%); z-index: 0; }
     canvas { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-
-    header {
-      position: fixed; top: 0; width: 100%;
-      padding: 1.2rem 5%;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(20,184,166,0.2);
-      z-index: 1000; box-sizing: border-box;
-    }
-
+    header { position: fixed; top: 0; width: 100%; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(20,184,166,0.2); z-index: 1000; box-sizing: border-box; }
     .logo-title { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
     .logo-title img { height: 42px; border-radius: 6px; }
-    .logo-title h2 { font-size: 1.3rem; margin: 0; letter-spacing: 0.5px; }
-
+    .logo-title h2 { font-size: 1.3rem; margin: 0; }
     nav { display: flex; align-items: center; gap: 25px; }
-    nav a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none; font-weight: 500; font-size: 0.95rem;
-      transition: 0.3s;
-    }
+    nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; transition: 0.3s; }
     nav a:hover, nav a.active { color: #14b8a6; }
-
-    .cta-nav {
-      background: #14b8a6; padding: 9px 22px; border-radius: 50px;
-      color: white !important; font-weight: 700;
-    }
-
-    main {
-      position: relative; z-index: 2;
-      padding: 160px 8% 100px;
-      max-width: 1200px; margin: 0 auto;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      background: linear-gradient(to right, #fff 40%, #14b8a6);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 25px; line-height: 1.1;
-    }
-
-    .intro p {
-      max-width: 750px; font-size: 1.2rem;
-      color: #94a3b8; line-height: 1.8; margin-bottom: 60px;
-    }
-
-    .section-title {
-      font-size: 2rem; margin: 80px 0 35px;
-      border-left: 4px solid #14b8a6; padding-left: 20px;
-      color: #e2e8f0;
-    }
-
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: rgba(15,23,42,0.4);
-      padding: 35px; border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .card:hover {
-      border-color: rgba(20,184,166,0.5);
-      transform: translateY(-8px);
-      background: rgba(20,184,166,0.03);
-    }
-
+    .cta-nav { background: #14b8a6; padding: 9px 22px; border-radius: 50px; color: white !important; font-weight: 700; }
+    
+    main { position: relative; z-index: 2; padding: 160px 8% 100px; max-width: 1200px; margin: 0 auto; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); background: linear-gradient(to right, #fff 40%, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; }
+    .intro p { max-width: 750px; font-size: 1.2rem; color: #94a3b8; line-height: 1.8; margin-bottom: 60px; }
+    .section-title { font-size: 2rem; margin: 80px 0 35px; border-left: 4px solid #14b8a6; padding-left: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .card { background: rgba(15,23,42,0.4); padding: 35px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.06); transition: 0.4s; }
+    .card:hover { border-color: rgba(20,184,166,0.5); transform: translateY(-8px); }
     .card i { font-size: 1.8rem; color: #14b8a6; margin-bottom: 20px; display: block; }
-    .card h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
-    .card p { color: #94a3b8; line-height: 1.6; font-size: 1rem; margin: 0; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .card p { color: #94a3b8; line-height: 1.6; }
 
-    /* ROADMAP STYLING */
     .roadmap { display: flex; flex-direction: column; gap: 20px; max-width: 800px; }
-    .step {
-      display: flex; align-items: center; gap: 20px;
-      background: rgba(255,255,255,0.03); padding: 25px;
-      border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
-    }
-    .num {
-      width: 45px; height: 45px; background: #14b8a6;
-      color: #000; border-radius: 50%; display: flex;
-      align-items: center; justify-content: center;
-      font-weight: 800; flex-shrink: 0;
-    }
+    .step { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; }
+    .num { width: 45px; height: 45px; background: #14b8a6; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
 
-    .cta-box {
-      margin-top: 100px; padding: 80px 40px; text-align: center;
-      border-radius: 40px; border: 1px solid rgba(20,184,166,0.3);
-      background: linear-gradient(135deg, rgba(20,184,166,0.1), transparent);
-    }
-
-    .glow-btn {
-      display: inline-block; margin-top: 30px;
-      padding: 18px 45px; background: #14b8a6;
-      color: white; font-weight: 800; border-radius: 100px;
-      text-decoration: none; transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(20, 184, 166, 0.2);
-    }
-    .glow-btn:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(20, 184, 166, 0.4); }
-
-    footer { text-align: center; padding: 60px 20px; color: #475569; font-size: 0.9rem; }
-
-    @media (max-width: 768px) {
-      header { padding: 1rem 5%; }
-      nav { display: none; }
-      main { padding-top: 140px; }
-      .grid { grid-template-columns: 1fr; }
-    }
+    .cta-box { margin-top: 100px; padding: 80px 40px; text-align: center; border-radius: 40px; border: 1px solid rgba(20,184,166,0.3); background: linear-gradient(135deg, rgba(20,184,166,0.1), transparent); }
+    .glow-btn { display: inline-block; margin-top: 30px; padding: 18px 45px; background: #14b8a6; color: white; font-weight: 800; border-radius: 100px; text-decoration: none; }
+    footer { text-align: center; padding: 60px 20px; color: #475569; }
   </style>
 </head>
 
 <body>
-
 <div class="bg-fixed"></div>
 <canvas id="webgl"></canvas>
 
@@ -159,88 +62,81 @@
 
 <main>
   <section class="intro">
-    <h1>Built by Students.<br>Driven by Clarity.</h1>
+    <h1>Code, Content & <br>Creative Growth.</h1>
     <p>
-      SJ Creative Labs is a student-led digital innovation studio in Andhra Pradesh. We help traditional businesses and startups transition into the digital world without the complex jargon.
+      SJ Creative Labs is a student-led team focusing on the visual and functional layers of the web. We build your digital identity and manage your social presence while you grow your business.
     </p>
   </section>
 
-  <h2 class="section-title">Who Handles Your Business?</h2>
+  <h2 class="section-title">Our Expertise</h2>
   <div class="grid">
     <div class="card">
-      <i class="fas fa-user-shield"></i>
-      <h3>Full Management</h3>
-      <p>We don't just "hand over" a website. We manage the servers, security updates, and technical maintenance so you can focus on your customers.</p>
+      <i class="fas fa-code"></i>
+      <h3>Full-Stack Dev</h3>
+      <p>We handle everything from UI design to back-end logic. We deliver clean, production-ready code for your website or web application.</p>
     </div>
     <div class="card">
-      <i class="fas fa-share-nodes"></i>
-      <h3>Social Ecosystem</h3>
-      <p>We set up and manage your Instagram, WhatsApp Business, and Google profiles, ensuring your brand looks professional across the entire web.</p>
+      <i class="fas fa-hashtag"></i>
+      <h3>Social Media Management</h3>
+      <p>We take care of your digital voice. From Instagram content creation to WhatsApp marketing, we keep your audience engaged daily.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-pen-nib"></i>
+      <h3>Content Support</h3>
+      <p>Need a new product added or a blog post updated? We provide ongoing web support to ensure your site's content remains fresh and relevant.</p>
     </div>
   </div>
 
   <h2 class="section-title">What We Don’t Do</h2>
   <div class="grid">
-    <div class="card"><i class="fas fa-ban"></i><h3>No Fake Hype</h3><p>We don’t promise overnight viral growth or use bots/fake followers. We believe in organic, honest reach.</p></div>
-    <div class="card"><i class="fas fa-hand-holding-usd"></i><h3>No Hidden Upsells</h3><p>We don’t sell services you don’t need. If a simple WhatsApp link works better for you than a complex app, we'll tell you.</p></div>
-    <div class="card"><i class="fas fa-shield-alt"></i><h3>No Rigid Corporate</h3><p>We don't hide behind email tickets. You get direct access to the students building your vision.</p></div>
+    <div class="card">
+      <i class="fas fa-server"></i>
+      <h3>Server Maintenance</h3>
+      <p>We do not manage physical servers or low-level IT infrastructure. We recommend reliable third-party hosting providers for your site.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-shield-virus"></i>
+      <h3>Cybersecurity Ops</h3>
+      <p>We focus on building and content. We don't provide dedicated server-side security monitoring or penetration testing.</p>
+    </div>
   </div>
 
   <h2 class="section-title">The Path for Beginners</h2>
   <div class="roadmap">
-    <div class="step"><div class="num">1</div><p><strong>The Blueprint:</strong> We sit down to understand your business and explain the digital possibilities in simple terms.</p></div>
-    <div class="step"><div class="num">2</div><p><strong>The Build:</strong> We create your website and social handles from scratch, handling all registrations and setup.</p></div>
-    <div class="step"><div class="num">3</div><p><strong>The Growth:</strong> We provide continuous support, updating your products and content as your business evolves.</p></div>
+    <div class="step"><div class="num">1</div><p><strong>Design & Code:</strong> We build your website using modern stacks and ensure it looks perfect on all devices.</p></div>
+    <div class="step"><div class="num">2</div><p><strong>Social Setup:</strong> We optimize your Instagram, LinkedIn, and WhatsApp for business communication.</p></div>
+    <div class="step"><div class="num">3</div><p><strong>Ongoing Support:</strong> We stay by your side for content updates and creative social media management.</p></div>
   </div>
 
   <section class="cta-box">
-    <h2>Zero Knowledge? No Problem.</h2>
-    <p>Most of our clients started exactly where you are. We’re built to help you take that first step.</p>
+    <h2>Let's Build Your Identity.</h2>
+    <p>We handle the creative and the code. You handle the business.</p>
     <a href="contact.html" class="glow-btn">Start Your Project</a>
   </section>
 </main>
 
 <footer>&copy; 2026 SJ Creative Labs. All rights reserved.</footer>
 
-<script type="importmap">
-  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
-</script>
+<script type="importmap"> { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } } </script>
 <script type="module">
   import * as THREE from 'three';
   const canvas = document.querySelector('#webgl');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
   camera.position.z = 10;
-
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-
   const pointsCount = 3000;
   const posArray = new Float32Array(pointsCount * 3);
-  for(let i=0; i < pointsCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 15;
-  }
+  for(let i=0; i < pointsCount * 3; i++) posArray[i] = (Math.random() - 0.5) * 15;
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
   const mat = new THREE.PointsMaterial({ size: 0.03, color: 0x14b8a6, transparent: true, opacity: 0.5 });
   const points = new THREE.Points(geo, mat);
   scene.add(points);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    points.rotation.y += 0.001;
-    points.rotation.x += 0.0005;
-    renderer.render(scene, camera);
-  }
+  function animate() { requestAnimationFrame(animate); points.rotation.y += 0.001; renderer.render(scene, camera); }
   animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
 </script>
-
 </body>
 </html>
