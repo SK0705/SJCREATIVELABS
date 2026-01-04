@@ -6,11 +6,10 @@
   <title>Services - SJ Creative Labs</title>
 
   <link rel="icon" href="favicon-32x32.png" type="image/png">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Reset and Base Styles - Consistent with index.html */
+    /* Reset and Base Styles - SJ Creative Labs Unified Theme */
     html, body {
       margin: 0;
       padding: 0;
@@ -21,7 +20,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Fixed uniform background */
     .bg-fixed {
       position: fixed;
       inset: 0;
@@ -29,7 +27,7 @@
       z-index: -1;
     }
 
-    /* High-Profile Header */
+    /* UNIFIED HEADER */
     header {
       position: fixed;
       top: 0;
@@ -38,75 +36,67 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 4rem; 
-      min-height: 95px;      
+      padding: 1rem 5%; 
+      min-height: 80px;      
       box-sizing: border-box;
-      z-index: 1000;
-      background: rgba(15, 23, 42, 0.9);
+      z-index: 2000;
+      background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border-bottom: 2px solid #14b8a6;
+      border-bottom: 1px solid rgba(20, 184, 166, 0.3);
     }
 
     .logo-title {
       display: flex;
       align-items: center;
-      gap: 15px;
-      color: white;
+      gap: 12px;
       text-decoration: none;
+      z-index: 2100;
     }
 
-    .logo-title img {
-      height: 50px; 
-      border-radius: 8px;
-    }
+    .logo-title img { height: 40px; border-radius: 6px; }
+    .logo-title h2 { margin: 0; font-size: 1.3rem; color: #e0f2fe; }
 
-    .logo-title h2 {
-      margin: 0;
-      font-size: 1.6rem;
-      color: #e0f2fe;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-    }
-
+    nav { display: flex; gap: 30px; }
     nav a {
-      color: white;
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
+    nav a:hover, nav a.active { color: #14b8a6; }
 
-    nav a:hover { color: #14b8a6; }
+    .header-actions { display: flex; align-items: center; gap: 15px; }
 
-    .cta-buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .cta-buttons a {
+    .cta-btn-header {
       padding: 10px 20px;
       background-color: #14b8a6;
       border-radius: 8px;
       text-decoration: none;
       color: white;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
       transition: 0.3s;
     }
 
-    .cta-buttons a:hover {
-      background-color: #0f766e;
-      transform: translateY(-2px);
+    /* HAMBURGER UI */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 2100;
     }
+    .menu-toggle span { width: 28px; height: 2px; background: white; transition: 0.3s; }
 
-    /* Services Layout */
+    /* SERVICES LAYOUT */
     .services-main {
-      padding: 140px 10% 60px; /* Space for the fixed header */
+      padding: 160px 10% 80px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .services-main h1 {
@@ -115,18 +105,18 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
       max-width: 1300px;
       margin: 0 auto;
     }
 
-    /* UNIFORM GLASS CARD STYLE */
+    /* GLASS CARD STYLE */
     .service-card {
       background: rgba(15, 23, 42, 0.4);
       backdrop-filter: blur(15px);
@@ -152,11 +142,11 @@
       border-color: #14b8a6;
       transform: translateY(-10px);
       background: rgba(20, 184, 166, 0.05);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     }
 
     .service-icon {
-      font-size: 48px;
+      font-size: 44px;
       color: #14b8a6;
       margin-bottom: 20px;
     }
@@ -167,61 +157,72 @@
       font-weight: bold;
       padding: 5px 12px;
       border-radius: 50px;
-      background: rgba(20, 184, 166, 0.15);
+      background: rgba(20, 184, 166, 0.1);
       color: #14b8a6;
       margin-bottom: 15px;
-      border: 1px solid rgba(20, 184, 166, 0.3);
+      border: 1px solid rgba(20, 184, 166, 0.2);
     }
 
     .service-card h3 {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       margin: 10px 0;
       color: #fff;
     }
 
     .service-card p {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
       line-height: 1.6;
-      margin-bottom: 25px;
-      font-size: 1.05rem;
+      margin-bottom: 30px;
+      font-size: 1rem;
     }
 
     .explore-btn {
       margin-top: auto;
       display: inline-block;
-      padding: 10px 30px;
+      padding: 10px 35px;
       border: 1px solid #14b8a6;
       color: #14b8a6;
       text-decoration: none;
       border-radius: 50px;
       font-weight: bold;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .explore-btn:hover {
       background: #14b8a6;
       color: white;
-      box-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
     }
 
     /* FEATURED CARD */
     .service-card.featured {
-      background: linear-gradient(145deg, rgba(20, 184, 166, 0.2), rgba(15, 23, 42, 0.4));
-      border: 2px solid #14b8a6;
+      background: linear-gradient(145deg, rgba(20, 184, 166, 0.15), rgba(15, 23, 42, 0.5));
+      border: 1px solid #14b8a6;
     }
 
     footer {
-      padding: 4rem;
+      padding: 4rem 1rem;
       text-align: center;
-      background: #000;
       border-top: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.4);
     }
 
+    /* MOBILE NAVIGATION */
     @media (max-width: 768px) {
-      header { padding: 1rem 2rem; min-height: 80px; }
-      nav { display: none; }
-      .services-main { padding-top: 120px; }
+      .menu-toggle { display: flex; }
+      nav {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background: rgba(2, 6, 23, 0.98); flex-direction: column;
+        justify-content: center; align-items: center; transition: 0.4s;
+      }
+      nav.active { right: 0; }
+      nav a { font-size: 2rem; font-weight: 700; margin: 15px 0; }
+      .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .menu-toggle.active span:nth-child(2) { opacity: 0; }
+      .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      
+      .services-main { padding: 140px 5% 60px; }
+      .service-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -231,24 +232,30 @@
 <div class="bg-fixed"></div>
 
 <header>
-  <div class="logo-title">
+  <a href="index.html" class="logo-title">
     <img src="logo.jpg" alt="SJ Logo" />
     <h2>SJ Creative Labs</h2>
-  </div>
-  <nav>
+  </a>
+
+  <nav id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="services.html" style="color: #14b8a6;">Services</a>
+    <a href="services.html" class="active">Services</a>
     <a href="story.html">Story</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="cta-buttons">
-    <a href="https://wa.me/919346124421" target="_blank">WhatsApp</a>
-    <a href="https://www.instagram.com/sj.creative_labs" target="_blank">Instagram</a>
+
+  <div class="header-actions">
+    <a href="https://wa.me/919346124421" target="_blank" class="cta-btn-header">WhatsApp</a>
+    <div class="menu-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </header>
 
 <main class="services-main">
-  <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.9rem;">OUR EXPERTISE</span>
+  <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 10px;">OUR EXPERTISE</span>
   <h1>Our Services</h1>
 
   <div class="service-grid">
@@ -257,7 +264,7 @@
       <span class="category">CORE</span>
       <div class="service-icon"><i class="fas fa-code"></i></div>
       <h3>Website Development</h3>
-      <p>From high-converting landing pages to complex full-stack applications.</p>
+      <p>From high-converting landing pages to complex full-stack applications built for scale.</p>
       <a href="webdev.html" class="explore-btn">Explore</a>
     </div>
 
@@ -265,7 +272,7 @@
       <span class="category">CORE</span>
       <div class="service-icon"><i class="fas fa-palette"></i></div>
       <h3>Branding & Design</h3>
-      <p>Visual storytelling through logos, typography, and cohesive brand identities.</p>
+      <p>Visual storytelling through logos, typography, and cohesive digital brand identities.</p>
       <a href="branding&design.html" class="explore-btn">Explore</a>
     </div>
 
@@ -273,7 +280,7 @@
       <span class="category">CORE</span>
       <div class="service-icon"><i class="fas fa-hashtag"></i></div>
       <h3>Social Media Marketing</h3>
-      <p>Engage and grow your audience with data-driven social strategies.</p>
+      <p>Engage and grow your audience with data-driven social strategies and content.</p>
       <a href="marketing.html" class="explore-btn">Explore</a>
     </div>
 
@@ -281,14 +288,15 @@
       <span class="category">GROWTH</span>
       <div class="service-icon"><i class="fas fa-search"></i></div>
       <h3>SEO</h3>
-      <p>Technical optimization and content strategies to rank higher on Google.</p>
+      <p>Technical optimization and authority building to help your brand rank #1 on Google.</p>
       <a href="seo.html" class="explore-btn">Explore</a>
     </div>
+
     <div class="service-card">
       <span class="category">CREATIVE</span>
       <div class="service-icon"><i class="fas fa-image"></i></div>
       <h3>Poster & Flex Design</h3>
-      <p>High-impact promotional visuals for print and digital marketing.</p>
+      <p>High-impact promotional visuals designed for both print and digital marketing.</p>
       <a href="poster-flex.html" class="explore-btn">Explore</a>
     </div>
 
@@ -296,7 +304,7 @@
       <span class="category">CREATIVE</span>
       <div class="service-icon"><i class="fas fa-gift"></i></div>
       <h3>Custom Greetings</h3>
-      <p>Personalized digital designs for celebrations and corporate events.</p>
+      <p>Personalized digital designs for celebrations, milestones, and corporate events.</p>
       <a href="greetings.html" class="explore-btn">Explore</a>
     </div>
 
@@ -312,10 +320,29 @@
 </main>
 
 <footer>
-  <p>&copy; 2025 SJ Creative Labs. All rights reserved.</p>
+  <p>&copy; 2026 SJ Creative Labs. All rights reserved.</p>
 </footer>
 
 <script>
+  // HAMBURGER LOGIC
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('nav-menu');
+  
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      menu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
+
   // Intersection Observer for scroll animations
   const cards = document.querySelectorAll('.service-card');
   const observer = new IntersectionObserver(entries => {
@@ -330,6 +357,4 @@
 </script>
 
 </body>
-
 </html>
-
