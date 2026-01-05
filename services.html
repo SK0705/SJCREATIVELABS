@@ -1,230 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services - SJ Creative Labs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - SJ Creative Labs</title>
 
-  <link rel="icon" href="favicon-32x32.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    /* Reset and Base Styles - SJ Creative Labs Unified Theme */
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background: black;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      scroll-behavior: smooth;
-    }
+  <style>
+    /* Reset and Base Styles - SJ Creative Labs Unified Theme */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: black;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      scroll-behavior: smooth;
+    }
 
-    .bg-fixed {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, #020617 0%, #000 100%);
-      z-index: -1;
-    }
+    .bg-fixed {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #020617 0%, #000 100%);
+      z-index: -1;
+    }
 
-    /* UNIFIED HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%; 
-      min-height: 80px;      
-      box-sizing: border-box;
-      z-index: 2000;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(20, 184, 166, 0.3);
-    }
+    /* UNIFIED HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%; 
+      min-height: 80px;      
+      box-sizing: border-box;
+      z-index: 2000;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(20, 184, 166, 0.3);
+    }
 
-    .logo-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      z-index: 2100;
-    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      z-index: 2100;
+    }
 
-    .logo-title img { height: 40px; border-radius: 6px; }
-    .logo-title h2 { margin: 0; font-size: 1.3rem; color: #e0f2fe; }
+    .logo-title img { height: 40px; border-radius: 6px; }
+    .logo-title h2 { margin: 0; font-size: 1.3rem; color: #e0f2fe; }
 
-    nav { display: flex; gap: 30px; }
-    nav a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
-    nav a:hover, nav a.active { color: #14b8a6; }
+    nav { display: flex; gap: 30px; }
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    nav a:hover, nav a.active { color: #14b8a6; }
 
-    .header-actions { display: flex; align-items: center; gap: 15px; }
+    .header-actions { display: flex; align-items: center; gap: 15px; }
 
-    .cta-btn-header {
-      padding: 10px 20px;
-      background-color: #14b8a6;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: 0.3s;
-    }
+    .cta-btn-header {
+      padding: 10px 20px;
+      background-color: #14b8a6;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: 0.3s;
+    }
 
-    /* HAMBURGER UI */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      padding: 5px;
-      z-index: 2100;
-    }
-    .menu-toggle span { width: 28px; height: 2px; background: white; transition: 0.3s; }
+    /* HAMBURGER UI */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 2100;
+    }
+    .menu-toggle span { width: 28px; height: 2px; background: white; transition: 0.3s; }
 
-    /* SERVICES LAYOUT */
-    .services-main {
-      padding: 160px 10% 80px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+    /* SERVICES LAYOUT */
+    .services-main {
+      padding: 160px 10% 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
 
-    .services-main h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      background: linear-gradient(to right, #fff, #14b8a6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 50px;
-    }
+    .services-main h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(to right, #fff, #14b8a6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 50px;
+    }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-    /* GLASS CARD STYLE */
-    .service-card {
-      background: rgba(15, 23, 42, 0.4);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(20, 184, 166, 0.15);
-      border-radius: 24px;
-      padding: 40px 25px;
-      text-align: center;
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    /* GLASS CARD STYLE */
+    .service-card {
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(20, 184, 166, 0.15);
+      border-radius: 24px;
+      padding: 40px 25px;
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    .service-card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .service-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .service-card:hover {
-      border-color: #14b8a6;
-      transform: translateY(-10px);
-      background: rgba(20, 184, 166, 0.05);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
+    .service-card:hover {
+      border-color: #14b8a6;
+      transform: translateY(-10px);
+      background: rgba(20, 184, 166, 0.05);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
 
-    .service-icon {
-      font-size: 44px;
-      color: #14b8a6;
-      margin-bottom: 20px;
-    }
+    .service-icon {
+      font-size: 44px;
+      color: #14b8a6;
+      margin-bottom: 20px;
+    }
 
-    .category {
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      font-weight: bold;
-      padding: 5px 12px;
-      border-radius: 50px;
-      background: rgba(20, 184, 166, 0.1);
-      color: #14b8a6;
-      margin-bottom: 15px;
-      border: 1px solid rgba(20, 184, 166, 0.2);
-    }
+    .category {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 50px;
+      background: rgba(20, 184, 166, 0.1);
+      color: #14b8a6;
+      margin-bottom: 15px;
+      border: 1px solid rgba(20, 184, 166, 0.2);
+    }
 
-    .service-card h3 {
-      font-size: 1.6rem;
-      margin: 10px 0;
-      color: #fff;
-    }
+    .service-card h3 {
+      font-size: 1.6rem;
+      margin: 10px 0;
+      color: #fff;
+    }
 
-    .service-card p {
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.6;
-      margin-bottom: 30px;
-      font-size: 1rem;
-    }
+    .service-card p {
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
 
-    .explore-btn {
-      margin-top: auto;
-      display: inline-block;
-      padding: 10px 35px;
-      border: 1px solid #14b8a6;
-      color: #14b8a6;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
+    .explore-btn {
+      margin-top: auto;
+      display: inline-block;
+      padding: 10px 35px;
+      border: 1px solid #14b8a6;
+      color: #14b8a6;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
 
-    .explore-btn:hover {
-      background: #14b8a6;
-      color: white;
-      box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
-    }
+    .explore-btn:hover {
+      background: #14b8a6;
+      color: white;
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+    }
 
-    /* FEATURED CARD */
-    .service-card.featured {
-      background: linear-gradient(145deg, rgba(20, 184, 166, 0.15), rgba(15, 23, 42, 0.5));
-      border: 1px solid #14b8a6;
-    }
+    /* FEATURED CARD */
+    .service-card.featured {
+      background: linear-gradient(145deg, rgba(20, 184, 166, 0.15), rgba(15, 23, 42, 0.5));
+      border: 1px solid #14b8a6;
+    }
 
-    footer {
-      padding: 4rem 1rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.4);
-    }
+    footer {
+      padding: 4rem 1rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.4);
+    }
 
-    /* MOBILE NAVIGATION */
-    @media (max-width: 768px) {
-      .menu-toggle { display: flex; }
-      nav {
-        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-        background: rgba(2, 6, 23, 0.98); flex-direction: column;
-        justify-content: center; align-items: center; transition: 0.4s;
-      }
-      nav.active { right: 0; }
-      nav a { font-size: 2rem; font-weight: 700; margin: 15px 0; }
-      .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-      .menu-toggle.active span:nth-child(2) { opacity: 0; }
-      .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-      
-      .services-main { padding: 140px 5% 60px; }
-      .service-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+    /* MOBILE NAVIGATION */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background: rgba(2, 6, 23, 0.98); flex-direction: column;
+        justify-content: center; align-items: center; transition: 0.4s;
+      }
+      nav.active { right: 0; }
+      nav a { font-size: 2rem; font-weight: 700; margin: 15px 0; }
+      .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .menu-toggle.active span:nth-child(2) { opacity: 0; }
+      .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      
+      .services-main { padding: 140px 5% 60px; }
+      .service-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
@@ -232,129 +232,130 @@
 <div class="bg-fixed"></div>
 
 <header>
-  <a href="index.html" class="logo-title">
-    <img src="logo.jpg" alt="SJ Logo" />
-    <h2>SJ Creative Labs</h2>
-  </a>
+  <a href="index.html" class="logo-title">
+    <img src="logo.jpg" alt="SJ Logo" />
+    <h2>SJ Creative Labs</h2>
+  </a>
 
-  <nav id="nav-menu">
-    <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="story.html">Story</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="story.html">Story</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <div class="header-actions">
-    <a href="https://wa.me/919346124421" target="_blank" class="cta-btn-header">WhatsApp</a>
-    <div class="menu-toggle" id="mobile-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
+  <div class="header-actions">
+    <a href="https://wa.me/919346124421" target="_blank" class="cta-btn-header">WhatsApp</a>
+    <div class="menu-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
 <main class="services-main">
-  <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 10px;">OUR EXPERTISE</span>
-  <h1>Our Services</h1>
+  <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 10px;">OUR EXPERTISE</span>
+  <h1>Our Services</h1>
 
-  <div class="service-grid">
+  <div class="service-grid">
 
-    <div class="service-card">
-      <span class="category">CORE</span>
-      <div class="service-icon"><i class="fas fa-code"></i></div>
-      <h3>Website Development</h3>
-      <p>From high-converting landing pages to complex full-stack applications built for scale.</p>
-      <a href="webdev.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-code"></i></div>
+      <h3>Website Development</h3>
+      <p>From high-converting landing pages to complex full-stack applications built for scale.</p>
+      <a href="webdev.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card">
-      <span class="category">CORE</span>
-      <div class="service-icon"><i class="fas fa-palette"></i></div>
-      <h3>Branding & Design</h3>
-      <p>Visual storytelling through logos, typography, and cohesive digital brand identities.</p>
-      <a href="branding&design.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-palette"></i></div>
+      <h3>Branding & Design</h3>
+      <p>Visual storytelling through logos, typography, and cohesive digital brand identities.</p>
+      <a href="branding&design.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card">
-      <span class="category">CORE</span>
-      <div class="service-icon"><i class="fas fa-hashtag"></i></div>
-      <h3>Social Media Marketing</h3>
-      <p>Engage and grow your audience with data-driven social strategies and content.</p>
-      <a href="marketing.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+      <h3>Social Media Marketing</h3>
+      <p>Engage and grow your audience with data-driven social strategies and content.</p>
+      <a href="marketing.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card">
-      <span class="category">GROWTH</span>
-      <div class="service-icon"><i class="fas fa-search"></i></div>
-      <h3>SEO</h3>
-      <p>Technical optimization and authority building to help your brand rank #1 on Google.</p>
-      <a href="seo.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">GROWTH</span>
+      <div class="service-icon"><i class="fas fa-search"></i></div>
+      <h3>SEO</h3>
+      <p>Technical optimization and authority building to help your brand rank #1 on Google.</p>
+      <a href="seo.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card">
-      <span class="category">CREATIVE</span>
-      <div class="service-icon"><i class="fas fa-image"></i></div>
-      <h3>Poster & Flex Design</h3>
-      <p>High-impact promotional visuals designed for both print and digital marketing.</p>
-      <a href="poster-flex.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">CREATIVE</span>
+      <div class="service-icon"><i class="fas fa-image"></i></div>
+      <h3>Poster & Flex Design</h3>
+      <p>High-impact promotional visuals designed for both print and digital marketing.</p>
+      <a href="poster-flex.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card">
-      <span class="category">CREATIVE</span>
-      <div class="service-icon"><i class="fas fa-gift"></i></div>
-      <h3>Custom Greetings</h3>
-      <p>Personalized digital designs for celebrations, milestones, and corporate events.</p>
-      <a href="greetings.html" class="explore-btn">Explore</a>
-    </div>
+    <div class="service-card">
+      <span class="category">CREATIVE</span>
+      <div class="service-icon"><i class="fas fa-gift"></i></div>
+      <h3>Custom Greetings</h3>
+      <p>Personalized digital designs for celebrations, milestones, and corporate events.</p>
+      <a href="greetings.html" class="explore-btn">Explore</a>
+    </div>
 
-    <div class="service-card featured">
-      <span class="category">BEST VALUE</span>
-      <div class="service-icon"><i class="fas fa-rocket"></i></div>
-      <h3>Startup Booster</h3>
-      <p>A full-suite package including branding, a website, and marketing setup to launch fast.</p>
-      <a href="startup.html" class="explore-btn">Explore Package</a>
-    </div>
+    <div class="service-card featured">
+      <span class="category">BEST VALUE</span>
+      <div class="service-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Startup Booster</h3>
+      <p>A full-suite package including branding, a website, and marketing setup to launch fast.</p>
+      <a href="startup.html" class="explore-btn">Explore Package</a>
+    </div>
 
-  </div>
+  </div>
 </main>
 
 <footer>
-  <p>&copy; 2026 SJ Creative Labs. All rights reserved.</p>
+  <p>&copy; 2026 SJ Creative Labs. All rights reserved.</p>
 </footer>
 
 <script>
-  // HAMBURGER LOGIC
-  const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('nav-menu');
-  
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    menu.classList.toggle('active');
-    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-  });
+  // HAMBURGER LOGIC
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('nav-menu');
+  
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+  });
 
-  // Close menu on link click
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      menu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  });
+  // Close menu on link click
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      menu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
 
-  // Intersection Observer for scroll animations
-  const cards = document.querySelectorAll('.service-card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.1 });
+  // Intersection Observer for scroll animations
+  const cards = document.querySelectorAll('.service-card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
 
-  cards.forEach(card => observer.observe(card));
+  cards.forEach(card => observer.observe(card));
 </script>
 
 </body>
 </html>
+
