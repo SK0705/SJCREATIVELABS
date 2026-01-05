@@ -1,250 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SJ Creative Labs — Innovate. Elevate. Dominate.</title>
-<link rel="icon" href="favicon-32x32.png" type="image/png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SJ Creative Labs — Innovate. Elevate. Dominate.</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/png">
 
-<style>
-/* --- 1. BASE STYLES --- */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  background: black;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: white;
-  scroll-behavior: smooth;
-}
+    <style>
+        /* --- 1. BASE STYLES --- */
+        :root {
+            --primary: #14b8a6;
+            --bg-dark: #020617;
+            --glass: rgba(15, 23, 42, 0.85);
+        }
 
-/* Fixed background layers */
-.bg-fixed {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #020617 0%, #000 100%);
-  z-index: 0;
-}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Prevents header overlap on scroll */
+        }
 
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: black;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
 
-/* --- 2. HEADER & NAVIGATION --- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%; 
-  min-height: 80px;      
-  box-sizing: border-box;
-  z-index: 2000;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(20, 184, 166, 0.3);
-}
+        .bg-fixed {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #020617 0%, #000 100%);
+            z-index: 0;
+        }
 
-.logo-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  z-index: 2100;
-}
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-.logo-title img {
-  height: 40px; 
-  border-radius: 6px;
-}
+        /* --- 2. HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 5%; 
+            height: 80px;      
+            box-sizing: border-box;
+            z-index: 2000;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+        }
 
-.logo-title h2 {
-  margin: 0;
-  font-size: 1.3rem;
-  color: #e0f2fe;
-  letter-spacing: -0.5px;
-}
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-nav {
-  display: flex;
-  gap: 30px;
-}
+        .logo-title img {
+            height: 40px; 
+            border-radius: 6px;
+        }
 
-nav a {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
+        .logo-title h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #e0f2fe;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
 
-nav a:hover { color: #14b8a6; }
+        nav {
+            display: flex;
+            gap: 25px;
+        }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-.cta-btn-header {
-  padding: 10px 20px;
-  background-color: #14b8a6;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-  transition: 0.3s;
-}
+        nav a:hover { color: var(--primary); }
 
-/* HAMBURGER UI */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-  padding: 5px;
-}
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.menu-toggle span {
-  width: 28px;
-  height: 2px;
-  background: white;
-  transition: 0.3s;
-}
+        .cta-btn-header {
+            padding: 8px 16px;
+            background-color: var(--primary);
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
 
-/* --- 3. HERO SECTION --- */
-.hero-section {
-  position: relative;
-  min-height: 100svh; /* svh prevents mobile address bar jumping */
-  display: flex;
-  align-items: center;
-  padding: 0 10%; 
-  z-index: 3;
-}
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        
+        .social-link:hover { opacity: 1; color: var(--primary); }
 
-.overlay {
-  max-width: 650px;
-}
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 3000;
+        }
 
-.overlay h1 {
-  font-size: clamp(2.8rem, 9vw, 4.5rem);
-  line-height: 1.1;
-  background: linear-gradient(to right, #fff, #14b8a6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 1rem 0;
-}
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            transition: 0.3s;
+        }
 
-.overlay p {
-  font-size: clamp(1.1rem, 4vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-}
+        /* --- 3. HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%; 
+            z-index: 3;
+        }
 
-.hero-btn {
-  display: inline-block;
-  padding: 15px 35px;
-  border: 1px solid #14b8a6;
-  color: #14b8a6;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
+        .overlay {
+            max-width: 700px;
+        }
 
-.hero-btn:hover {
-  background: #14b8a6;
-  color: white;
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
-}
+        .overlay h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
+        }
 
-/* --- 4. SERVICES --- */
-.services-container {
-  padding: 10vh 10%;
-  display: flex;
-  flex-direction: column;
-  z-index: 4;
-  position: relative;
-}
+        .overlay p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
 
-.service-card {
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(20, 184, 166, 0.15);
-  border-radius: 24px;
-  padding: 3.5rem 2.5rem;
-  width: 100%;
-  max-width: 400px; 
-  margin-bottom: 20vh; 
-  transition: 0.4s ease;
-}
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
 
-.service-card:hover {
-  border-color: #14b8a6;
-  transform: translateX(15px);
-}
+        .hero-btn:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+        }
 
-.service-card h3 { font-size: 2.2rem; margin: 0 0 1rem 0; color: #fff; }
-.service-card p { font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.6); }
+        /* --- 4. SERVICES --- */
+        .services-container {
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            z-index: 4;
+            position: relative;
+        }
 
-footer {
-  padding: 4rem 1rem;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.4);
-  font-size: 0.9rem;
-}
+        .service-card {
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px; 
+            margin-bottom: 15vh; 
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-/* --- 5. MOBILE OVERRIDES (max-width: 768px) --- */
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateX(20px);
+            background: rgba(20, 184, 166, 0.05);
+        }
 
-  nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: rgba(2, 6, 23, 0.95);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+        .service-card h3 { font-size: 2rem; margin: 0 0 1rem 0; color: #fff; }
+        .service-card p { font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.6); }
 
-  nav.active { right: 0; }
-  nav a { font-size: 2rem; font-weight: 700; }
+        footer {
+            padding: 4rem 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
 
-  .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .menu-toggle.active span:nth-child(2) { opacity: 0; }
-  .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        /* --- 5. MOBILE OVERRIDES --- */
+        @media (max-width: 900px) {
+            nav { display: none; } /* Hide main nav links on tablet/mobile */
+            .header-actions .social-link { display: none; } /* Hide text links to save space */
+            .menu-toggle { display: flex; }
 
-  .hero-section {
-    text-align: center;
-    padding-top: 100px;
-  }
+            nav.active {
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(2, 6, 23, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 2500;
+            }
 
-  .service-card {
-    max-width: 100%;
-    margin-bottom: 3vh; /* Closer together for mobile */
-    padding: 2.5rem 1.5rem;
-  }
+            nav.active a { font-size: 2rem; margin: 15px 0; }
 
-  .service-card:hover { transform: none; }
-}
-</style>
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .hero-section { text-align: center; justify-content: center; }
+            .overlay p { margin-left: auto; margin-right: auto; }
+
+            .service-card {
+                max-width: 100%;
+                margin-bottom: 2rem;
+                padding: 2rem;
+            }
+            .service-card:hover { transform: none; }
+        }
+    </style>
 </head>
 
 <body>
@@ -252,90 +270,91 @@ footer {
 <div class="bg-fixed"></div>
 
 <header>
-  <a href="#" class="logo-title">
-    <img src="logo.jpg" alt="SJ Logo" />
-    <h2>SJ Creative Labs</h2>
-  </a>
+    <a href="#" class="logo-title">
+        <img src="logo.jpg" alt="SJ Logo" />
+        <h2>SJ Creative Labs</h2>
+    </a>
 
-  <nav id="nav-menu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="story.html">Story</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="story.html">Story</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-  <div class="header-actions">
-    <a href="https://wa.me/919346124421" target="_blank" class="cta-btn-header">WhatsApp</a>
-    <a href="https://www.instagram.com/sj.creative_labs" target="_blank">Instagram</a>
-    <div class="menu-toggle" id="mobile-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="header-actions">
+        <a href="https://wa.me/919346124421" target="_blank" class="cta-btn-header">WhatsApp</a>
+        <a href="https://www.instagram.com/sj.creative_labs" target="_blank" class="social-link">Instagram</a>
+        <div class="menu-toggle" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-  </div>
 </header>
 
 <section class="hero-section">
-  <div class="overlay">
-    <span style="color:#14b8a6; letter-spacing:4px; font-weight: bold; font-size: 0.8rem; display: block; margin-bottom: 10px;">STUDENTPRENEURS</span>
-    <h1>Innovate.<br>Elevate.<br>Dominate.</h1>
-    <p>We are your digital partners for high-performance branding, design, and marketing strategies.</p>
-    <a href="#services" class="hero-btn">Explore Our Services</a>
-  </div>
+    <div class="overlay">
+        <span style="color:var(--primary); letter-spacing:4px; font-weight: bold; font-size: 0.75rem; display: block; margin-bottom: 10px;">STUDENTPRENEURS</span>
+        <h1>Innovate.<br>Elevate.<br>Dominate.</h1>
+        <p>We are your digital partners for high-performance branding, design, and marketing strategies.</p>
+        <a href="#services" class="hero-btn">Explore Our Services</a>
+    </div>
 </section>
 
 <div class="content-wrapper" id="services">
-  <section class="services-container">
-    <div class="service-card">
-      <h3>Web Design</h3>
-      <p>Crafting responsive and modern websites. We build digital experiences that turn ideas into brands.</p>
-    </div>
+    <section class="services-container">
+        <div class="service-card">
+            <h3>Web Design</h3>
+            <p>Crafting responsive and modern websites. We build digital experiences that turn ideas into brands.</p>
+        </div>
 
-    <div class="service-card">
-      <h3>Digital Marketing</h3>
-      <p>Performance-based campaigns that deliver real ROI. We help startups design, build, and scale.</p>
-    </div>
+        <div class="service-card">
+            <h3>Digital Marketing</h3>
+            <p>Performance-based campaigns that deliver real ROI. We help startups design, build, and scale.</p>
+        </div>
 
-    <div class="service-card">
-      <h3>Brand Strategy</h3>
-      <p>Building brands from scratch that stand out with clarity, consistency, and power.</p>
-    </div>
-  </section>
+        <div class="service-card">
+            <h3>Brand Strategy</h3>
+            <p>Building brands from scratch that stand out with clarity, consistency, and power.</p>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 SJ Creative Labs. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 SJ Creative Labs. All rights reserved.</p>
+    </footer>
 </div>
 
 <canvas id="webgl"></canvas>
 
 <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
     }
-  }
 </script>
 
 <script>
-  // MOBILE MENU LOGIC
-  const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('nav-menu');
-  
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    menu.classList.toggle('active');
-    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-  });
-
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      menu.classList.remove('active');
-      document.body.style.overflow = 'auto';
+    // MOBILE MENU LOGIC
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('nav-menu');
+    
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
     });
-  });
+
+    // Close menu when clicking links
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            toggle.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
 </script>
 
 <script type="module">
@@ -358,7 +377,6 @@ composer.addPass(new RenderPass(scene, camera));
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.2, 0.4, 0.85);
 composer.addPass(bloomPass);
 
-// PERFORMANCE ADAPTATION
 const isMobile = window.innerWidth < 768;
 const COUNT = isMobile ? 6000 : 15000; 
 
@@ -366,25 +384,25 @@ const sphere = new Float32Array(COUNT * 3);
 const cube = new Float32Array(COUNT * 3);
 
 for (let i = 0; i < COUNT; i++) {
-  const u = Math.random();
-  const v = Math.random();
-  const theta = u * Math.PI * 2;
-  const phi = Math.acos(2 * v - 1);
-  const r = 1.5;
-  sphere[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-  sphere[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-  sphere[i * 3 + 2] = r * Math.cos(phi);
+    const u = Math.random();
+    const v = Math.random();
+    const theta = u * Math.PI * 2;
+    const phi = Math.acos(2 * v - 1);
+    const r = 1.5;
+    sphere[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    sphere[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    sphere[i * 3 + 2] = r * Math.cos(phi);
 
-  const side = Math.floor(Math.random() * 6);
-  const a = (Math.random() - 0.5) * 2.2;
-  const b = (Math.random() - 0.5) * 2.2;
-  const fixed = 1.1; 
-  if (side === 0) { cube[i*3]=fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
-  else if (side === 1) { cube[i*3]=-fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
-  else if (side === 2) { cube[i*3]=a; cube[i*3+1]=fixed; cube[i*3+2]=b; }
-  else if (side === 3) { cube[i*3]=a; cube[i*3+1]=-fixed; cube[i*3+2]=b; }
-  else if (side === 4) { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=fixed; }
-  else { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=-fixed; }
+    const side = Math.floor(Math.random() * 6);
+    const a = (Math.random() - 0.5) * 2.2;
+    const b = (Math.random() - 0.5) * 2.2;
+    const fixed = 1.1; 
+    if (side === 0) { cube[i*3]=fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
+    else if (side === 1) { cube[i*3]=-fixed; cube[i*3+1]=a; cube[i*3+2]=b; }
+    else if (side === 2) { cube[i*3]=a; cube[i*3+1]=fixed; cube[i*3+2]=b; }
+    else if (side === 3) { cube[i*3]=a; cube[i*3+1]=-fixed; cube[i*3+2]=b; }
+    else if (side === 4) { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=fixed; }
+    else { cube[i*3]=a; cube[i*3+1]=b; cube[i*3+2]=-fixed; }
 }
 
 const geometry = new THREE.BufferGeometry();
@@ -393,74 +411,72 @@ geometry.setAttribute("aSphere", new THREE.BufferAttribute(sphere, 3));
 geometry.setAttribute("aCube", new THREE.BufferAttribute(cube, 3));
 
 const material = new THREE.ShaderMaterial({
-  uniforms: {
-    uTime: { value: 0 },
-    uMorph: { value: 0 },
-    uMouse: { value: new THREE.Vector2() }
-  },
-  vertexShader: `
-    uniform float uTime;
-    uniform float uMorph;
-    uniform vec2 uMouse;
-    attribute vec3 aSphere;
-    attribute vec3 aCube;
-    varying float vAlpha;
-    void main() {
-      vec3 pos = mix(aSphere, aCube, uMorph);
-      float d = distance(pos.xy, uMouse);
-      pos += normalize(pos) * (0.15 / (d + 0.5)) * sin(uTime * 2.0);
-      vAlpha = 1.0 - (uMorph * 0.3);
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-      gl_PointSize = ${isMobile ? '3.0' : '2.0'};
-    }
-  `,
-  fragmentShader: `
-    varying float vAlpha;
-    void main() {
-      if (length(gl_PointCoord - 0.5) > 0.5) discard;
-      gl_FragColor = vec4(0.08, 0.72, 0.65, vAlpha);
-    }
-  `,
-  transparent: true,
-  depthWrite: false,
-  blending: THREE.AdditiveBlending
+    uniforms: {
+        uTime: { value: 0 },
+        uMorph: { value: 0 },
+        uMouse: { value: new THREE.Vector2() }
+    },
+    vertexShader: `
+        uniform float uTime;
+        uniform float uMorph;
+        uniform vec2 uMouse;
+        attribute vec3 aSphere;
+        attribute vec3 aCube;
+        varying float vAlpha;
+        void main() {
+            vec3 pos = mix(aSphere, aCube, uMorph);
+            float d = distance(pos.xy, uMouse);
+            pos += normalize(pos) * (0.15 / (d + 0.5)) * sin(uTime * 2.0);
+            vAlpha = 1.0 - (uMorph * 0.3);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            gl_PointSize = ${isMobile ? '3.0' : '2.0'};
+        }
+    `,
+    fragmentShader: `
+        varying float vAlpha;
+        void main() {
+            if (length(gl_PointCoord - 0.5) > 0.5) discard;
+            gl_FragColor = vec4(0.08, 0.72, 0.65, vAlpha);
+        }
+    `,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
 });
 
 const points = new THREE.Points(geometry, material);
 scene.add(points);
 
 function resize() {
-  const w = window.innerWidth;
-  const h = window.innerHeight;
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
-  composer.setSize(w, h);
-  
-  // Position graphic based on screen size
-  if(w < 768) {
-    points.position.set(0, -0.4, 0); 
-    points.scale.setScalar(0.7);
-  } else {
-    points.position.set(2.2, -0.8, 0);
-    points.scale.setScalar(1);
-  }
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+    composer.setSize(w, h);
+    
+    if(w < 768) {
+        points.position.set(0, -0.2, 0); 
+        points.scale.setScalar(0.7);
+    } else {
+        points.position.set(2.2, -0.5, 0);
+        points.scale.setScalar(1);
+    }
 }
 
 window.addEventListener("resize", resize);
 resize();
 
 window.addEventListener("scroll", () => {
-  const scrollTotal = document.body.scrollHeight - window.innerHeight;
-  const s = window.scrollY / (scrollTotal || 1);
-  material.uniforms.uMorph.value = THREE.MathUtils.clamp(s * 2.5, 0, 1);
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const s = window.scrollY / scrollHeight;
+    material.uniforms.uMorph.value = Math.min(s * 2.0, 1.0);
 });
 
-// Touch and Mouse support
 const handleInput = (x, y) => {
-  const offsetX = window.innerWidth < 768 ? 0 : 2;
-  material.uniforms.uMouse.value.x = (x / window.innerWidth - 0.5) * 4 - offsetX;
-  material.uniforms.uMouse.value.y = -(y / window.innerHeight - 0.5) * 4;
+    const offsetX = window.innerWidth < 768 ? 0 : 2;
+    material.uniforms.uMouse.value.x = (x / window.innerWidth - 0.5) * 4 - offsetX;
+    material.uniforms.uMouse.value.y = -(y / window.innerHeight - 0.5) * 4;
 }
 
 window.addEventListener("mousemove", e => handleInput(e.clientX, e.clientY));
@@ -468,14 +484,13 @@ window.addEventListener("touchmove", e => handleInput(e.touches[0].clientX, e.to
 
 const clock = new THREE.Clock();
 function animate() {
-  requestAnimationFrame(animate);
-  material.uniforms.uTime.value = clock.getElapsedTime();
-  points.rotation.y += 0.0015;
-  composer.render();
+    requestAnimationFrame(animate);
+    material.uniforms.uTime.value = clock.getElapsedTime();
+    points.rotation.y += 0.0015;
+    composer.render();
 }
 animate();
 </script>
 
 </body>
 </html>
-
