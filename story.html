@@ -9,19 +9,72 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ... (Styles remain consistent with previous design) ... */
     html, body { margin: 0; padding: 0; background: #000; font-family: 'Segoe UI', sans-serif; color: white; scroll-behavior: smooth; overflow-x: hidden; }
     .bg-fixed { position: fixed; inset: 0; background: radial-gradient(circle at 20% 30%, #020617 0%, #000 100%); z-index: 0; }
     canvas { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-    header { position: fixed; top: 0; width: 100%; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(20,184,166,0.2); z-index: 1000; box-sizing: border-box; }
-    .logo-title { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+    
+    header { 
+        position: fixed; top: 0; width: 100%; padding: 1.2rem 5%; 
+        display: flex; justify-content: space-between; align-items: center; 
+        background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); 
+        border-bottom: 1px solid rgba(20,184,166,0.2); z-index: 1000; box-sizing: border-box; 
+    }
+    
+    .logo-title { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; z-index: 1001; }
     .logo-title img { height: 42px; border-radius: 6px; }
     .logo-title h2 { font-size: 1.3rem; margin: 0; }
+    
+    /* Desktop Nav */
     nav { display: flex; align-items: center; gap: 25px; }
     nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; transition: 0.3s; }
     nav a:hover, nav a.active { color: #14b8a6; }
     .cta-nav { background: #14b8a6; padding: 9px 22px; border-radius: 50px; color: white !important; font-weight: 700; }
-    
+
+    /* Hamburger Button (Hidden on Desktop) */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .menu-toggle span {
+        width: 30px;
+        height: 3px;
+        background: white;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .menu-toggle { display: flex; }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: rgba(2, 6, 23, 0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s ease-in-out;
+            z-index: 1000;
+        }
+
+        nav.active { right: 0; }
+
+        nav a { font-size: 1.5rem; margin: 15px 0; }
+        
+        /* Hamburger Animation */
+        .menu-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    }
+
+    /* Main Content Styles */
     main { position: relative; z-index: 2; padding: 160px 8% 100px; max-width: 1200px; margin: 0 auto; }
     h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); background: linear-gradient(to right, #fff 40%, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; }
     .intro p { max-width: 750px; font-size: 1.2rem; color: #94a3b8; line-height: 1.8; margin-bottom: 60px; }
@@ -52,7 +105,14 @@
     <img src="logo.jpg" alt="SJ Logo">
     <h2>SJ Creative Labs</h2>
   </a>
-  <nav>
+
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="nav-list">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
     <a href="story.html" class="active">Story</a>
@@ -63,59 +123,41 @@
 <main>
   <section class="intro">
     <h1>Code, Content & <br>Creative Growth.</h1>
-    <p>
-      SJ Creative Labs is a student-led team focusing on the visual and functional layers of the web. We build your digital identity and manage your social presence while you grow your business.
-    </p>
+    <p>SJ Creative Labs is a student-led team focusing on the visual and functional layers of the web. We build your digital identity while you grow your business.</p>
   </section>
 
   <h2 class="section-title">Our Expertise</h2>
   <div class="grid">
-    <div class="card">
-      <i class="fas fa-code"></i>
-      <h3>Full-Stack Dev</h3>
-      <p>We handle everything from UI design to back-end logic. We deliver clean, production-ready code for your website or web application.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-hashtag"></i>
-      <h3>Social Media Management</h3>
-      <p>We take care of your digital voice. From Instagram content creation to WhatsApp marketing, we keep your audience engaged daily.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-pen-nib"></i>
-      <h3>Content Support</h3>
-      <p>Need a new product added or a blog post updated? We provide ongoing web support to ensure your site's content remains fresh and relevant.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">What We Don’t Do</h2>
-  <div class="grid">
-    <div class="card">
-      <i class="fas fa-server"></i>
-      <h3>Server Maintenance</h3>
-      <p>We do not manage physical servers or low-level IT infrastructure. We recommend reliable third-party hosting providers for your site.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-shield-virus"></i>
-      <h3>Cybersecurity Ops</h3>
-      <p>We focus on building and content. We don't provide dedicated server-side security monitoring or penetration testing.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">The Path for Beginners</h2>
-  <div class="roadmap">
-    <div class="step"><div class="num">1</div><p><strong>Design & Code:</strong> We build your website using modern stacks and ensure it looks perfect on all devices.</p></div>
-    <div class="step"><div class="num">2</div><p><strong>Social Setup:</strong> We optimize your Instagram, LinkedIn, and WhatsApp for business communication.</p></div>
-    <div class="step"><div class="num">3</div><p><strong>Ongoing Support:</strong> We stay by your side for content updates and creative social media management.</p></div>
+    <div class="card"><i class="fas fa-code"></i><h3>Full-Stack Dev</h3><p>We handle everything from UI design to back-end logic.</p></div>
+    <div class="card"><i class="fas fa-hashtag"></i><h3>Social Media</h3><p>We take care of your digital voice and audience engagement.</p></div>
+    <div class="card"><i class="fas fa-pen-nib"></i><h3>Content Support</h3><p>Ongoing support to ensure your site remains fresh.</p></div>
   </div>
 
   <section class="cta-box">
     <h2>Let's Build Your Identity.</h2>
-    <p>We handle the creative and the code. You handle the business.</p>
     <a href="contact.html" class="glow-btn">Start Your Project</a>
   </section>
 </main>
 
 <footer>&copy; 2026 SJ Creative Labs. All rights reserved.</footer>
+
+<script>
+  const menuToggle = document.getElementById('mobile-menu');
+  const navList = document.getElementById('nav-list');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('open');
+    navList.classList.toggle('active');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('open');
+      navList.classList.remove('active');
+    });
+  });
+</script>
 
 <script type="importmap"> { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } } </script>
 <script type="module">
