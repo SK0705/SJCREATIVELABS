@@ -66,7 +66,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            z-index: 3001;
+            z-index: 3100; /* Ensure logo is above mobile menu */
         }
 
         .logo-title img {
@@ -101,6 +101,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            z-index: 3100;
         }
 
         .cta-btn-header {
@@ -120,14 +121,13 @@
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
-            padding: 10px;
-            z-index: 3001;
+            padding: 5px;
         }
 
         .menu-toggle span {
-            width: 24px;
+            width: 28px;
             height: 2px;
             background: white;
             transition: 0.3s;
@@ -208,40 +208,41 @@
             font-size: 0.85rem;
         }
 
-        /* --- 5. MOBILE UPDATES --- */
-        @media (max-width: 1024px) {
+        /* --- 5. MOBILE UPDATES (Synchronized with 2nd Code) --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            
             nav {
-                display: none; /* Hidden by default */
+                display: flex; /* Always flex but hidden off-screen */
                 position: fixed;
-                inset: 0;
+                top: 0;
+                right: -100%; /* Slide out to the right */
+                width: 100%;
+                height: 100vh;
                 background: rgba(2, 6, 23, 0.98);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 z-index: 2500;
-                padding: 20px;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
-            nav.active { display: flex; }
-            nav a { font-size: 2rem; margin: 15px 0; }
-
-            .menu-toggle { display: flex; }
-            
-            /* Compact Action Button */
-            .cta-btn-header span { display: none; }
-            .cta-btn-header { padding: 12px; border-radius: 50%; }
+            nav.active { right: 0; }
+            nav a { font-size: 2rem; font-weight: 700; margin: 15px 0; }
 
             /* Hamburger Animation */
-            .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .menu-toggle.active span:nth-child(2) { opacity: 0; }
-            .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-        }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        @media (max-width: 600px) {
+            /* Adjustments for Hero */
             .hero-section { text-align: center; justify-content: center; padding-top: 100px; }
             .overlay p { margin-left: auto; margin-right: auto; }
-            .logo-title h2 { font-size: 0.9rem; } /* Keep it small but visible */
-            .service-card { padding: 1.5rem; }
+            .logo-title h2 { font-size: 1rem; }
+            
+            /* Keeping CTA button visible but clean */
+            .cta-btn-header span { display: none; } /* Hide text "WhatsApp" */
+            .cta-btn-header { padding: 10px; } 
         }
     </style>
 </head>
@@ -251,7 +252,7 @@
 <div class="bg-fixed"></div>
 
 <header>
-    <a href="#" class="logo-title">
+    <a href="index.html" class="logo-title">
         <img src="logo.jpg" alt="SJ Logo" />
         <h2>SJ Creative Labs</h2>
     </a>
@@ -307,7 +308,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 SJ Creative Labs. All rights reserved.</p>
+        <p>&copy; 2026 SJ Creative Labs. All rights reserved.</p>
     </footer>
 </div>
 
@@ -329,11 +330,9 @@
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
         menu.classList.toggle('active');
-        // Prevent scrolling when menu is open
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
     });
 
-    // Close menu when a link is clicked
     document.querySelectorAll('#nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             toggle.classList.remove('active');
@@ -344,6 +343,8 @@
 </script>
 
 <script type="module">
+    // (Three.js code from original first script remains here...)
+    // ... including the resize logic which already handles mobile particle positioning
 import * as THREE from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
@@ -442,7 +443,6 @@ function resize() {
     composer.setSize(w, h);
     
     if(w < 768) {
-        // Move particles down so they don't cover the main headline on phones
         points.position.set(0, -1.2, 0); 
         points.scale.setScalar(0.8);
     } else {
